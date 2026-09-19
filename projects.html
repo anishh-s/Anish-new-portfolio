@@ -608,6 +608,132 @@ footer.site-foot{ border-top:1px solid var(--line-soft); padding:60px 0 40px; po
   font-family:var(--ff-mono); font-size:11px; color:var(--ink-faint); padding-top:24px; border-top:1px solid var(--line-soft);
 }
 
+/* ---------- POSTERS ---------- */
+.section-head{ margin-bottom:34px; }
+.section-head .eyebrow{ margin-bottom:10px; }
+.section-head h2{ font-family:var(--ff-display); font-size:clamp(26px,3.6vw,38px); margin:0 0 10px; letter-spacing:-0.01em; }
+.section-head p{ color:var(--ink-dim); font-size:14.5px; max-width:56ch; margin:0; }
+.poster-divider{ border:none; border-top:1px solid var(--line-soft); margin:90px 0; }
+
+/* circular rotating gallery */
+.orbit-gallery-wrap{
+  position:relative; width:100%; height:520px; margin-bottom:56px;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden; border-radius:var(--radius-lg);
+  background:radial-gradient(circle at 50% 50%, var(--panel-hi), var(--void) 75%);
+  border:1px solid var(--line);
+}
+@media (max-width:640px){ .orbit-gallery-wrap{ height:400px; } }
+.orbit-gallery{
+  position:relative; width:100%; height:100%;
+  display:flex; align-items:center; justify-content:center;
+  perspective:1800px;
+}
+.orbit-track{
+  position:relative; width:1px; height:1px;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.orbit-slide{
+  position:absolute; width:180px; height:260px; top:50%; left:50%;
+  margin:-130px 0 0 -90px;
+  border-radius:var(--radius); overflow:hidden;
+  border:1px solid var(--line); background:var(--panel);
+  box-shadow:0 20px 50px rgba(0,0,0,0.45);
+  transition:opacity .25s linear;
+}
+@media (max-width:640px){
+  .orbit-slide{ width:130px; height:190px; margin:-95px 0 0 -65px; }
+}
+.orbit-slide img{ width:100%; height:100%; object-fit:cover; }
+.orbit-slide .orbit-cap{
+  position:absolute; left:0; right:0; bottom:0; padding:10px 12px;
+  font-family:var(--ff-mono); font-size:10.5px; color:var(--ink);
+  background:linear-gradient(to top, rgba(10,13,18,0.9), transparent);
+}
+.orbit-hint{
+  position:absolute; bottom:16px; left:0; right:0; text-align:center;
+  font-family:var(--ff-mono); font-size:11px; color:var(--ink-faint);
+  letter-spacing:.04em; pointer-events:none;
+}
+
+/* remaining posters grid */
+.poster-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+@media (max-width:960px){ .poster-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:640px){ .poster-grid{ grid-template-columns:1fr; } }
+.poster-card{
+  border:1px solid var(--line); background:var(--panel); border-radius:var(--radius);
+  overflow:hidden; cursor:pointer; position:relative; aspect-ratio:3/4;
+  transition:transform .25s var(--ease), border-color .25s ease;
+}
+.poster-card:hover{ transform:translateY(-6px); border-color:var(--cyan); }
+.poster-card img{ width:100%; height:100%; object-fit:cover; }
+.poster-card .poster-tag{
+  position:absolute; left:12px; bottom:12px; right:12px;
+  font-family:var(--ff-mono); font-size:11px; color:var(--ink);
+  background:rgba(10,13,18,0.72); backdrop-filter:blur(6px);
+  padding:8px 10px; border-radius:6px; opacity:0; transform:translateY(8px);
+  transition:opacity .22s ease, transform .22s ease;
+}
+.poster-card:hover .poster-tag{ opacity:1; transform:translateY(0); }
+.poster-note{
+  font-family:var(--ff-mono); font-size:11.5px; color:var(--ink-faint);
+  border:1px dashed var(--line); border-radius:var(--radius); padding:22px;
+  display:flex; align-items:center; justify-content:center; text-align:center; aspect-ratio:3/4;
+}
+
+/* brand identity piles */
+.brand-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:30px; }
+@media (max-width:960px){ .brand-grid{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width:520px){ .brand-grid{ grid-template-columns:1fr; } }
+.brand-pile{
+  cursor:pointer; text-align:center;
+}
+.pile-stack{
+  position:relative; aspect-ratio:3/4; margin-bottom:20px;
+}
+.pile-stack img{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  border-radius:var(--radius); border:1px solid var(--line);
+  box-shadow:0 14px 30px rgba(0,0,0,0.4);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+}
+.pile-stack img:nth-child(1){ transform:rotate(0deg) translate(0,0); z-index:4; }
+.pile-stack img:nth-child(2){ transform:rotate(-6deg) translate(-10px,6px); z-index:3; }
+.pile-stack img:nth-child(3){ transform:rotate(6deg) translate(10px,10px); z-index:2; }
+.pile-stack img:nth-child(4){ transform:rotate(-11deg) translate(-18px,16px); z-index:1; }
+.brand-pile:hover .pile-stack img:nth-child(1){ transform:rotate(-3deg) translate(-18px,-14px); }
+.brand-pile:hover .pile-stack img:nth-child(2){ transform:rotate(-11deg) translate(-34px,2px); }
+.brand-pile:hover .pile-stack img:nth-child(3){ transform:rotate(9deg) translate(20px,4px); }
+.brand-pile:hover .pile-stack img:nth-child(4){ transform:rotate(15deg) translate(36px,18px); }
+.brand-pile h3{ font-family:var(--ff-display); font-size:16px; margin:0 0 6px; }
+.brand-pile .brand-meta{ font-family:var(--ff-mono); font-size:11px; color:var(--ink-faint); }
+
+/* lightbox */
+.lightbox{
+  position:fixed; inset:0; z-index:500; background:rgba(6,8,11,0.92);
+  backdrop-filter:blur(10px); display:none; align-items:center; justify-content:center;
+  padding:40px 20px;
+}
+.lightbox.open{ display:flex; }
+.lightbox-inner{ position:relative; max-width:900px; width:100%; text-align:center; }
+.lightbox-inner img{ max-width:100%; max-height:76vh; border-radius:var(--radius); margin:0 auto; border:1px solid var(--line); }
+.lightbox-cap{ font-family:var(--ff-mono); font-size:12px; color:var(--ink-dim); margin-top:16px; }
+.lightbox-close{
+  position:absolute; top:-46px; right:0; background:transparent; border:1px solid var(--line);
+  color:var(--ink); width:38px; height:38px; border-radius:50%; cursor:pointer; font-size:18px;
+  transition:border-color .2s ease, color .2s ease;
+}
+.lightbox-close:hover{ border-color:var(--cyan); color:var(--cyan); }
+.lightbox-nav{
+  position:absolute; top:50%; transform:translateY(-50%); background:rgba(10,13,18,0.6);
+  border:1px solid var(--line); color:var(--ink); width:44px; height:44px; border-radius:50%;
+  cursor:pointer; font-size:18px; transition:border-color .2s ease, color .2s ease;
+}
+.lightbox-nav:hover{ border-color:var(--cyan); color:var(--cyan); }
+.lightbox-nav.prev{ left:-56px; } .lightbox-nav.next{ right:-56px; }
+@media (max-width:860px){ .lightbox-nav.prev{ left:6px; } .lightbox-nav.next{ right:6px; } }
+
 a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
   outline:2px solid var(--cyan); outline-offset:2px;
 }
@@ -630,17 +756,17 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   <div class="nav-inner">
     <a href="index.html" class="nav-mark"><span class="dot"></span>Anish Sutradhar</a>
     <ul class="nav-links">
-      <li><a href="index.html" class="">Home</a></li><li><a href="about.html" class="">About</a></li><li><a href="experience.html" class="">Experience</a></li><li><a href="skills.html" class="">Skills</a></li><li><a href="projects.html" class="active">Projects</a></li><li><a href="contact.html" class="">Contact</a></li>
+      <li><a href="#" class="">Home</a></li><li><a href="about.html" class="">About</a></li><li><a href="experience.html" class="">Experience</a></li><li><a href="skills.html" class="">Skills</a></li><li><a href="projects.html" class="active">Projects</a></li><li><a href="contact.html" class="">Contact</a></li>
     </ul>
     <div class="nav-right">
-      <a class="nav-resume" href="https://drive.google.com/file/d/1fNpiQuw_V14fxGmtFLBt21g9AIgTK4mX/view?usp=sharing" target="_blank" rel="noopener">Resume &#8599;</a>
+      <a class="nav-resume" href="https://drive.google.com/file/d/1A9_IW-lqkM-bNkDoBeOWbB4MuS7yxq4Z/view?usp=sharing" target="_blank" rel="noopener">Resume &#8599;</a>
       <button class="nav-burger" id="navBurger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html" class="">Home</a><a href="about.html" class="">About</a><a href="experience.html" class="">Experience</a><a href="skills.html" class="">Skills</a><a href="projects.html" class="active">Projects</a><a href="contact.html" class="">Contact</a>
-  <a href="https://drive.google.com/file/d/1fNpiQuw_V14fxGmtFLBt21g9AIgTK4mX/view?usp=sharing" target="_blank" rel="noopener" style="color:var(--cyan);font-size:22px;margin-top:20px;">Download Resume &#8599;</a>
+  <a href="#" class="">Home</a><a href="about.html" class="">About</a><a href="experience.html" class="">Experience</a><a href="skills.html" class="">Skills</a><a href="projects.html" class="active">Projects</a><a href="contact.html" class="">Contact</a>
+  <a href="https://drive.google.com/file/d/1A9_IW-lqkM-bNkDoBeOWbB4MuS7yxq4Z/view?usp=sharing" target="_blank" rel="noopener" style="color:var(--cyan);font-size:22px;margin-top:20px;">Download Resume &#8599;</a>
 </div>
 
 <main>
@@ -648,7 +774,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 <div class="page-head wrap">
   <div class="eyebrow">Projects</div>
   <h1>Selected work.</h1>
-  <p>A mix of shipped front-end builds and interface designs.</p>
+  <p>A mix of shipped front-end builds and interface designs, filterable by discipline.</p>
 </div>
 
 <section style="padding-top:0;">
@@ -744,6 +870,120 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     </div>
   </div>
 </section>
+
+<section>
+  <div class="wrap">
+    <hr class="poster-divider">
+    <div class="section-head reveal">
+      <div class="eyebrow">Posters &amp; Brand Identity</div>
+      <h2>Off the grid, onto the wall.</h2>
+      <p>Poster design and brand identity work — separate from the dev/design builds above. Scroll or wait for it to drift on its own.</p>
+    </div>
+
+    <div class="orbit-gallery-wrap reveal">
+      <div class="orbit-gallery">
+        <div class="orbit-track" id="posterOrbit">
+          <!-- ADD MORE <div class="orbit-slide"> ITEMS HERE FOR ADDITIONAL ROTATING POSTERS -->
+          <div class="orbit-slide"><img src="assets/posters/poster-01-captain-cool.jpg" alt="Captain Cool poster"><div class="orbit-cap">Captain Cool</div></div>
+          <div class="orbit-slide"><img src="assets/posters/poster-02-messi-goat.jpg" alt="Messi GOAT poster"><div class="orbit-cap">Messi — GOAT</div></div>
+          <div class="orbit-slide"><img src="assets/posters/poster-03-happy-bday-dhoni.jpg" alt="Happy Birthday Dhoni poster"><div class="orbit-cap">Happy Birthday, Dhoni</div></div>
+          <div class="orbit-slide"><img src="assets/posters/poster-04-dance-fest.jpg" alt="Dance Fest 2026 poster"><div class="orbit-cap">Dance Fest 2026</div></div>
+          <div class="orbit-slide"><img src="assets/posters/poster-05-melodies-forever.jpg" alt="Melodies Forever poster"><div class="orbit-cap">Melodies Forever</div></div>
+          <div class="orbit-slide"><img src="assets/posters/poster-11-coca-cola.jpg" alt="Coca-Cola Taste the Moment poster"><div class="orbit-cap">Coca-Cola — Taste the Moment</div></div>
+        </div>
+      </div>
+      <div class="orbit-hint">Scroll to rotate · click a poster to view</div>
+    </div>
+
+    <!-- Remaining (non-rotating) posters go here as more are added.
+         Copy a .poster-card block and point it at a new image in assets/posters/. -->
+    <div class="poster-grid" id="posterGrid" style="margin-bottom:90px;">
+      <div class="poster-card" data-full="assets/posters/poster-06-horizon-sounds.jpg" data-cap="Horizon Sounds Festival 2026">
+        <img src="assets/posters/poster-06-horizon-sounds.jpg" alt="Horizon Sounds Festival poster">
+        <div class="poster-tag">Horizon Sounds Festival 2026</div>
+      </div>
+      <div class="poster-card" data-full="assets/posters/poster-07-first-principles.jpg" data-cap="First Principles — Design Talk Series">
+        <img src="assets/posters/poster-07-first-principles.jpg" alt="First Principles design talk poster">
+        <div class="poster-tag">First Principles — Design Talk</div>
+      </div>
+      <div class="poster-card" data-full="assets/posters/poster-08-tech-talk.jpg" data-cap="Nexus — Tech Talk">
+        <img src="assets/posters/poster-08-tech-talk.jpg" alt="Nexus Tech Talk poster">
+        <div class="poster-tag">Nexus — Tech Talk</div>
+      </div>
+      <div class="poster-card" data-full="assets/posters/poster-09-nescafe.jpg" data-cap="Nescafé — Wake Your World">
+        <img src="assets/posters/poster-09-nescafe.jpg" alt="Nescafe Wake Your World poster">
+        <div class="poster-tag">Nescafé — Wake Your World</div>
+      </div>
+      <div class="poster-card" data-full="assets/posters/poster-10-mcdonalds.jpg" data-cap="McDonald's — The Golden Moment">
+        <img src="assets/posters/poster-10-mcdonalds.jpg" alt="McDonald's The Golden Moment poster">
+        <div class="poster-tag">McDonald's — The Golden Moment</div>
+      </div>
+      <!-- ADD MORE .poster-card ITEMS HERE FOR ADDITIONAL NON-ROTATING POSTERS -->
+    </div>
+
+    <div class="section-head reveal">
+      <div class="eyebrow">Brand Identity</div>
+      <h2>Four brands, four moods.</h2>
+      <p>Moodboards and packaging concepts — each pile is a full brand identity. Hover to fan out, click to open.</p>
+    </div>
+
+    <div class="brand-grid reveal" id="brandGrid">
+      <div class="brand-pile" data-brand="velvet-cacao">
+        <div class="pile-stack">
+          <img src="assets/brands/velvet-cacao/page-1.jpg" alt="Velvet Cacao brand identity">
+          <img src="assets/brands/velvet-cacao/page-2.jpg" alt="">
+          <img src="assets/brands/velvet-cacao/page-3.jpg" alt="">
+          <img src="assets/brands/velvet-cacao/page-4.jpg" alt="">
+        </div>
+        <h3>Velvet Cacao</h3>
+        <div class="brand-meta">White Chocolate &amp; Silk Shampoo</div>
+      </div>
+
+      <div class="brand-pile" data-brand="naseem">
+        <div class="pile-stack">
+          <img src="assets/brands/naseem/page-1.jpg" alt="Naseem French Vanilla brand identity">
+          <img src="assets/brands/naseem/page-2.jpg" alt="">
+          <img src="assets/brands/naseem/page-3.jpg" alt="">
+          <img src="assets/brands/naseem/page-4.jpg" alt="">
+        </div>
+        <h3>Naseem</h3>
+        <div class="brand-meta">French Vanilla Parfum</div>
+      </div>
+
+      <div class="brand-pile" data-brand="dermaco">
+        <div class="pile-stack">
+          <img src="assets/brands/dermaco/page-1.jpg" alt="The Derma Co brand identity">
+          <img src="assets/brands/dermaco/page-2.jpg" alt="">
+          <img src="assets/brands/dermaco/page-3.jpg" alt="">
+          <img src="assets/brands/dermaco/page-4.jpg" alt="">
+        </div>
+        <h3>The Derma Co</h3>
+        <div class="brand-meta">1% Hyaluronic Sunscreen Aqua Gel</div>
+      </div>
+
+      <div class="brand-pile" data-brand="ordinary">
+        <div class="pile-stack">
+          <img src="assets/brands/ordinary/page-1.jpg" alt="The Ordinary brand identity">
+          <img src="assets/brands/ordinary/page-2.jpg" alt="">
+          <img src="assets/brands/ordinary/page-3.jpg" alt="">
+          <img src="assets/brands/ordinary/page-4.jpg" alt="">
+        </div>
+        <h3>The Ordinary</h3>
+        <div class="brand-meta">Glycolic Acid 7% Exfoliating Toner</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lightboxClose">&#10005;</button>
+    <button class="lightbox-nav prev" id="lightboxPrev">&#8249;</button>
+    <img id="lightboxImg" src="" alt="">
+    <div class="lightbox-cap" id="lightboxCap"></div>
+    <button class="lightbox-nav next" id="lightboxNext">&#8250;</button>
+  </div>
+</div>
 
 </main>
 
@@ -1003,6 +1243,123 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         c.style.display = show ? 'flex' : 'none';
       });
     });
+  });
+})();
+
+// ---------- circular poster gallery (scroll + idle auto-rotate) ----------
+(function(){
+  const track = document.getElementById('posterOrbit');
+  if(!track) return;
+  const slides = Array.from(track.querySelectorAll('.orbit-slide'));
+  const wrap = document.querySelector('.orbit-gallery-wrap');
+  const radius = window.innerWidth < 640 ? 300 : 460;
+  const anglePer = 360 / slides.length;
+
+  slides.forEach((slide, i) => {
+    slide.style.transform = `rotateY(${i * anglePer}deg) translateZ(${radius}px)`;
+  });
+
+  let rotation = 0;
+  let isScrolling = false;
+  let scrollTimer = null;
+  let rafId = null;
+  const autoSpeed = 0.06;
+
+  function render(){
+    track.style.transform = `rotateY(${rotation}deg)`;
+    const norm = ((rotation % 360) + 360) % 360;
+    slides.forEach((slide, i) => {
+      const slideAngle = (i * anglePer + norm) % 360;
+      const rel = slideAngle > 180 ? 360 - slideAngle : slideAngle;
+      slide.style.opacity = Math.max(0.25, 1 - rel / 180);
+    });
+  }
+
+  function onScroll(){
+    isScrolling = true;
+    clearTimeout(scrollTimer);
+    const rect = wrap.getBoundingClientRect();
+    const progress = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+    rotation = progress * 720;
+    render();
+    scrollTimer = setTimeout(() => { isScrolling = false; }, 150);
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+
+  function loop(){
+    if(!isScrolling) rotation += autoSpeed;
+    render();
+    rafId = requestAnimationFrame(loop);
+  }
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    loop();
+  } else {
+    render();
+  }
+
+  slides.forEach((slide, i) => {
+    const img = slide.querySelector('img');
+    slide.addEventListener('click', () => openLightbox(posterImages, i));
+  });
+})();
+
+// ---------- lightbox (shared by poster grid + brand piles) ----------
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxCap = document.getElementById('lightboxCap');
+let lbSet = [];
+let lbIndex = 0;
+
+const posterImages = Array.from(document.querySelectorAll('#posterOrbit .orbit-slide')).map(s => ({
+  src: s.querySelector('img').src,
+  cap: s.querySelector('.orbit-cap') ? s.querySelector('.orbit-cap').textContent : ''
+}));
+
+function openLightbox(set, index){
+  if(!lightbox || !set.length) return;
+  lbSet = set; lbIndex = index;
+  showLightboxImage();
+  lightbox.classList.add('open');
+}
+function showLightboxImage(){
+  const item = lbSet[lbIndex];
+  lightboxImg.src = item.src;
+  lightboxImg.alt = item.cap || '';
+  lightboxCap.textContent = item.cap ? `${item.cap} — ${lbIndex + 1} / ${lbSet.length}` : `${lbIndex + 1} / ${lbSet.length}`;
+}
+(function(){
+  if(!lightbox) return;
+  document.getElementById('lightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+  document.getElementById('lightboxNext').addEventListener('click', () => { lbIndex = (lbIndex + 1) % lbSet.length; showLightboxImage(); });
+  document.getElementById('lightboxPrev').addEventListener('click', () => { lbIndex = (lbIndex - 1 + lbSet.length) % lbSet.length; showLightboxImage(); });
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', (e) => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') lightbox.classList.remove('open');
+    if(e.key === 'ArrowRight') document.getElementById('lightboxNext').click();
+    if(e.key === 'ArrowLeft') document.getElementById('lightboxPrev').click();
+  });
+})();
+
+// ---------- poster grid (below rotation) ----------
+(function(){
+  const cards = document.querySelectorAll('.poster-card[data-full]');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      openLightbox([{ src: card.dataset.full, cap: card.dataset.cap || '' }], 0);
+    });
+  });
+})();
+
+// ---------- brand identity piles ----------
+(function(){
+  const piles = document.querySelectorAll('.brand-pile');
+  piles.forEach(pile => {
+    const imgs = Array.from(pile.querySelectorAll('.pile-stack img')).map(img => ({
+      src: img.src,
+      cap: pile.querySelector('h3').textContent
+    }));
+    pile.addEventListener('click', () => openLightbox(imgs, 0));
   });
 })();
 
