@@ -569,6 +569,15 @@ blockquote.pull{
   position:relative; overflow:hidden;
 }
 .proj-thumb::after{ content:''; position:absolute; inset:0; background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 60%); }
+.proj-thumb img.proj-shot{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:1;
+}
+.proj-avatar{
+  position:absolute; top:12px; right:12px; width:34px; height:34px; border-radius:50%;
+  overflow:hidden; border:2px solid rgba(255,255,255,0.85); box-shadow:0 4px 12px rgba(0,0,0,0.35);
+  z-index:2;
+}
+.proj-avatar img{ width:100%; height:100%; object-fit:cover; }
 .proj-body{ padding:22px; flex:1; display:flex; flex-direction:column; }
 .proj-cat{ font-family:var(--ff-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); margin-bottom:10px; display:flex; align-items:center; gap:7px; }
 .proj-cat .cdot{ width:6px; height:6px; border-radius:50%; }
@@ -718,7 +727,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     </div>
     <div class="proj-grid">
       <a class="proj-card reveal" href="https://github.com/anishh-s/Pocket-safar" target="_blank" rel="noopener">
-        <div class="proj-thumb" style="background:linear-gradient(135deg,#2fe1ce,#0d6b62);">Pocket Safar</div>
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#2fe1ce,#0d6b62);"><div class="proj-avatar"><img src="assets/profile/anish-avatar.jpg" alt="Anish Sutradhar"></div><img class="proj-shot" src="assets/projects/pocket-safar.jpg" alt="Pocket Safar"></div>
         <div class="proj-body">
           <div class="proj-cat"><span class="cdot" style="background:var(--cyan);"></span>Development</div>
           <h3>Pocket Safar</h3>
@@ -727,7 +736,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         </div>
       </a>
       <a class="proj-card reveal" href="https://www.figma.com/proto/gA2pXJlH8PM0QWUBKuZkTx/Burger-2go?page-id=0%3A1&node-id=1-36&p=f&viewport=916%2C343%2C0.61&t=Y3kUU8sQ0r3IlrBq-1&scaling=min-zoom&content-scaling=fixed" target="_blank" rel="noopener">
-        <div class="proj-thumb" style="background:linear-gradient(135deg,#ff6a4d,#a33c26);">Burger-2Go</div>
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#ff6a4d,#a33c26);"><div class="proj-avatar"><img src="assets/profile/anish-avatar.jpg" alt="Anish Sutradhar"></div><img class="proj-shot" src="assets/projects/burger-2go.jpg" alt="Burger-2Go"></div>
         <div class="proj-body">
           <div class="proj-cat"><span class="cdot" style="background:var(--coral);"></span>Design</div>
           <h3>Burger-2Go</h3>
@@ -736,7 +745,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
         </div>
       </a>
       <a class="proj-card reveal" href="https://github.com/anishh-s/F1" target="_blank" rel="noopener">
-        <div class="proj-thumb" style="background:linear-gradient(135deg,#8b96a3,#171c25);">F1 Clone</div>
+        <div class="proj-thumb" style="background:linear-gradient(135deg,#8b96a3,#171c25);"><div class="proj-avatar"><img src="assets/profile/anish-avatar.jpg" alt="Anish Sutradhar"></div><img class="proj-shot" src="assets/projects/f1-clone.jpg" alt="F1 Clone"></div>
         <div class="proj-body">
           <div class="proj-cat"><span class="cdot" style="background:var(--cyan);"></span>Development</div>
           <h3>F1 Website Clone</h3>
